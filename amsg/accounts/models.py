@@ -14,4 +14,3 @@ class CustomUser(AbstractUser):
 
 
 fdxhxh
-ygvygbuhbuhub
