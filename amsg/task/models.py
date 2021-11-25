@@ -7,3 +7,12 @@ class School(models.Model):
 
     class Meta:
         verbose_name_plural = 'School'
+
+
+class Class(models.Model):
+    school = models.ForeignKey(School,verbose_name='学校',default=0,on_delete=models.PROTECT)
+    grade = models.IntegerField(verbose_name='学年')
+    name = models.CharField(verbose_name='クラス名',max_length=10)
+
+    class Meta:
+        verbose_name_plural = 'Class'
