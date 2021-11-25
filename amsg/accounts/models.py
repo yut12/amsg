@@ -13,9 +13,4 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'CustomUser'
 
 
-fdxhxh
-<<<<<<< HEAD
-ygvygbuhbuhub
-fucker
-=======
->>>>>>> 9777d766073e6772abd53f2515459f8274399274
+hahaha
