@@ -14,5 +14,8 @@ class CustomUser(AbstractUser):
 
 
 fdxhxh
+<<<<<<< HEAD
 ygvygbuhbuhub
 fucker
+=======
+>>>>>>> 9777d766073e6772abd53f2515459f8274399274
