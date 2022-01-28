@@ -1,0 +1,14 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}A.M.S.G ｜ クラス作成{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">作成</button>
+    </form>
+</div>
+{% endblock %}

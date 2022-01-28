@@ -1,0 +1,21 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}A.M.S.G ｜ 課題設定{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+
+        {% for class in class_list %}
+            <p>
+                {{ class.class_name }} - :<input type="checkbox" name="distribute" value="{{ class.pk }}">
+            </p>
+        {% endfor %}
+        
+        <button type="submit">配布</button>
+    </form>
+</div>
+{% endblock %}

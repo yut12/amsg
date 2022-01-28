@@ -1,0 +1,21 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}A.M.S.G ｜ クラス設定{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+
+        {% for student in stu_list %}
+            <p>
+                {{ student.username }} - 追加:<input type="checkbox" name="add" value="{{ student.pk }}">
+            </p>
+        {% endfor %}
+        
+        <button type="submit">変更</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}課題詳細{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="my-div-style w-100">
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'task:task_set' task.pk %}">課題実施</a>
+        <div class="row">
+            <div class="col-3">
+                <strong>課題名</strong>
+            </div>
+            <div class="col-9">
+                {{ task.task_name }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>教科</strong>
+            </div>
+            <div class="col-9">
+                {{ task.task_subject }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>総得点</strong>
+            </div>
+            <div class="col-9">
+                {{ task.task_score }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>作成者</strong>
+            </div>
+            <div class="col-9">
+                {{ task.task_created_by }}
+            </div>
+        </div>
+
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'task:task_edit' task.pk %}">編集</a>
+        <a class="btn btn-danger mt-5 ml-2 mb-3" id="del" type="submit">削除</a>
+    </div>
+</div>
+{% endblock %}

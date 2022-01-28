@@ -1,0 +1,43 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}A.M.S.G ｜ 問題詳細{% endblock %}
+
+{% block activa_login %}active{% endblock %}
+
+{% block contents %}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">{{ class.class_name }}</h1>
+        <div class="card mb-4">
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>氏名</th>
+                            <th>ユーザーID</th>
+                            <th>メールアドレス</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>氏名</th>
+                            <th>ユーザーID</th>
+                            <th>メールアドレス</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <a href="{% url 'task:class_edit' class.pk %}">編集</a>
+                <button class="btn btn-info" type="submit">クラス成績</button>
+                <button class="btn btn-success" type="submit">クラス削除</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+</html>
+{% endblock %}

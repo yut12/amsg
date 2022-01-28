@@ -1,0 +1,81 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}ユーザー詳細{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="my-div-style w-100">
+        <div class="row">
+            <div class="col-3">
+                <strong>権限</strong>
+            </div>
+            <div class="col-9">
+                {% if customuser.user_auth == "1" %}
+                    管理者
+                {% endif %}
+                {% if customuser.user_auth == "2" %}
+                    教員
+                {% endif %}
+                {% if customuser.user_auth == "3" %}
+                    生徒
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>学年</strong>
+            </div>
+            <div class="col-9">
+                {{ customuser.user_grade }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>氏名</strong>
+            </div>
+            <div class="col-9">
+                {{ customuser.username }}
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>メールアドレス</strong>
+            </div>
+            <div class="col-9">
+                {{ customuser.email }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>ユーザーID</strong>
+            </div>
+            <div class="col-9">
+                {{ customuser.id }}
+            </div>
+        </div>
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'task:user_edit' customuser.pk %}">編集</a>
+        <a class="btn btn-danger mt-5 ml-2 mb-3" id="del" type="submit">削除</a>
+        <script>
+        /* ポップアップ */
+        var del = document.getElementById('del');
+        del.addEventListener('click',function(){
+            var result = window.confirm('本当に削除しますか？');
+            
+            if(result){
+                /* Trueの時の処理 */
+                console.log('削除しました。');
+            } else {
+                /* Falseの時の処理 */
+                console.log('キャンセルしました。')
+            }
+        })
+
+        </script>
+    </div>
+</div>
+{% endblock %}
