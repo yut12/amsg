@@ -1,0 +1,16 @@
+{% extends 'task_base.html' %}
+{% block title %}sign up{% endblock %}
+
+{% block contents %}
+<h1>サインアップ</h1>
+<form method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button type="submit">登録</button>
+</form>
+{% endblock %}

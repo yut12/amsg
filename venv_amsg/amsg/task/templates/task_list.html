@@ -1,0 +1,43 @@
+{%extends 'task_base.html'%}
+
+{%load static%}
+
+{%block title%}A.M.S.G ｜ 課題一覧{%endblock%}
+
+{%block contents%}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">課題一覧</h1>
+        <a class="nav-link" href="{% url 'task:task_create' %}">課題作成</a>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>課題名</th>
+                        <th>状態</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in object_list %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'task:task_info' obj.pk %}">
+                                {{ obj.task_name }}
+                            </a>
+                        </td>
+                        <td>
+                            {% if obj.task_status == "0" %}
+                                非公開
+                            {% elif obj.task_status == "1" %}
+                                公開
+                            {% endif %}
+                        </td>
+                    </tr>
+                    
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{%endblock%}

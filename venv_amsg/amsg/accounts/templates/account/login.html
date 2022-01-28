@@ -1,0 +1,32 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}A.M.S.G{% endblock %}
+
+{% block contents %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-5">
+			<div class="card shadow-lg border-0 rounded-lg mt-5">
+				<div class="card-header"><h1 class="text-center font-weight-light my-4">ログイン</h1></div>
+				<div class="card-body">
+					<form method="post" action="{% url 'account_login' %}">
+						{% csrf_token %}
+
+						{{ form.as_p }}
+
+						{% if redirect_field_value %}
+							<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+						{% endif %}
+						
+						<div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+							<p style="text-align:center"></p><button class="btn btn-primary" type="submit">ログイン</button>
+							<a class="button secondaryAction" href="{% url 'account_reset_password' %}">パスワードを忘れたましたか？</a></p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

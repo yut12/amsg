@@ -1,0 +1,59 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}A.M.S.G{% endblock %}
+
+
+{% block contents %}
+<body id="layoutSidenav_content">
+    <main>
+        <a href="{% url 'task:user_create' %}">新規作成</a>
+        <div class="container-fluid px-4">
+            <div class="my-div-style">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        ユーザー一覧
+                    </div>
+                    <div class="card-body">
+                        <table id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th>権限</th>
+                                    <th>氏名</th>
+                                    <th>メールアドレス</th>
+                                    <th>ユーザーID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for users in object_list %}
+                                <tr>
+                                    <td>
+                                        {% if users.user_auth == "1" %}
+                                            管理者
+                                        {% endif %}
+                                        {% if users.user_auth == "2" %}
+                                            教員
+                                        {% endif %}
+                                        {% if users.user_auth == "3" %}
+                                            生徒
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'task:user_info' users.pk %}">
+                                            {{ users.username }}
+                                        </a>
+                                    </td>
+                                    <td>{{ users.email }}</td>
+                                    <td>{{ users.id }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}

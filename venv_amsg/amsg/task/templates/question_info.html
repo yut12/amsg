@@ -1,0 +1,82 @@
+{% extends 'task_base.html' %}
+{% load static %}
+
+{% block title %}問題詳細{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="my-div-style w-100">
+        <div class="row">
+            <div class="col-3">
+                <strong>問題名</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_name }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>教科</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_subject }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>単元</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_unit }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>難易度</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_difficulty }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>配点</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_point }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>問題文</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_statement }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>解答</strong>
+            </div>
+            <div class="col-9">
+                {{ question.q_answer }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <strong>自動採点</strong>
+            </div>
+            <div class="col-9">
+                {% if question.q_autostatus == "0" %}
+                    off
+                {% else %}
+                    on
+                {% endif %}
+            </div>
+        </div>
+
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'task:question_edit' question.pk %}">編集</a>
+        <a class="btn btn-danger mt-5 ml-2 mb-3" id="del" type="submit">削除</a>
+    </div>
+</div>
+{% endblock %}
